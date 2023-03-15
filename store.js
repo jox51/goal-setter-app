@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import swapsSlice from "./src/features/swaps/swapsSlice"
+import goalsSlice from "./src/features/goals/goalsSlice"
 
 export const store = configureStore({
   reducer: {
-    swaps: swapsSlice
+    goals: goalsSlice
   }
 })
