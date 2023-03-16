@@ -2,6 +2,7 @@ import Landing from "./pages/Landing"
 import Navbar from "./components/Navbar"
 import CreateGoal from "./pages/CreateGoal"
 import { Routes, Route } from "react-router-dom"
+import SavedGoals from "./pages/SavedGoals"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/creategoal" element={<CreateGoal />} />
+        <Route path="/savedgoals" element={<SavedGoals />} />
       </Routes>
     </main>
   )

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css"
 const LoginModal = () => {
   const { hideLogin, loginResp } = useSelector((store) => store.goals)
 
-  if (loginResp.msg == "login success") {
+  if (hideLogin) {
     toast.success("Login Success")
     toast.clearWaitingQueue()
   }
@@ -47,8 +47,6 @@ const LoginModal = () => {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        draggable
         pauseOnHover
         theme="light"
       />

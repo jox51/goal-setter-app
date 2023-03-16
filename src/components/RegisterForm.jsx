@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
-import { registerUser, sendData } from "../features/goals/goalsSlice"
+import { sendData } from "../features/goals/goalsSlice"
 
 const RegisterForm = () => {
   const dispatch = useDispatch()
-  const { userData } = useSelector((store) => store.goals)
+  // const { userData } = useSelector((store) => store.goals)
 
   const {
     register,
@@ -18,12 +18,9 @@ const RegisterForm = () => {
 
   // handle form submit
   const onSubmit = (data) => {
-    dispatch(registerUser(data))
-    console.log(data)
-    dispatch(sendData())
+    dispatch(sendData(data))
   }
   console.log(errors)
-  console.log("redux state :", userData)
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
