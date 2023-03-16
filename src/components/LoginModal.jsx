@@ -7,10 +7,6 @@ import "react-toastify/dist/ReactToastify.css"
 const LoginModal = () => {
   const { hideLogin, loginResp } = useSelector((store) => store.goals)
 
-  if (hideLogin) {
-    toast.success("Login Success")
-    toast.clearWaitingQueue()
-  }
   if (loginResp.data?.msg == "password is incorrect") {
     toast.error("Password is incorrect")
     toast.clearWaitingQueue()
