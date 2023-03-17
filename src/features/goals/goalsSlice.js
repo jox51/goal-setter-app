@@ -16,6 +16,9 @@ const initialState = {
   currEditGoal: {}
 }
 
+const API_URL = import.meta.env.VITE_API_URL
+console.log(API_URL)
+
 export const sendData = createAsyncThunk(
   "register/data",
   async (registerData, thunkAPI) => {
@@ -24,14 +27,11 @@ export const sendData = createAsyncThunk(
 
     const { userData } = thunkAPI.getState().goals
     try {
-      const resp = await axios.post(
-        `http://localhost:3000/api/v1/auth/register`,
-        {
-          data: {
-            user: registerData
-          }
+      const resp = await axios.post(`${API_URL}/api/v1/auth/register`, {
+        data: {
+          user: registerData
         }
-      )
+      })
       return resp.data
     } catch (error) {
       return error.message
@@ -45,7 +45,7 @@ export const sendLoginData = createAsyncThunk(
     // params passing user input
 
     try {
-      const resp = await axios.post(`http://localhost:3000/api/v1/auth/login`, {
+      const resp = await axios.post(`${API_URL}/api/v1/auth/login`, {
         data: {
           user: { email, password }
         }
@@ -73,7 +73,7 @@ export const sendGoalData = createAsyncThunk(
 
     try {
       const resp = await axios.post(
-        `http://localhost:3000/api/v1/goals/create`,
+        `${API_URL}/api/v1/goals/create`,
         postData,
         config
       )
@@ -99,10 +99,7 @@ export const getGoals = createAsyncThunk(
     }
 
     try {
-      const resp = await axios.get(
-        `http://localhost:3000/api/v1/goals/`,
-        config
-      )
+      const resp = await axios.get(`${API_URL}/api/v1/goals/`, config)
       return resp.data
     } catch (error) {
       console.log("error", error)
@@ -126,7 +123,7 @@ export const updateGoals = createAsyncThunk(
 
     try {
       const resp = await axios.patch(
-        `http://localhost:3000/api/v1/goals/`,
+        `${API_URL}/api/v1/goals/`,
         patchData,
         config
       )
@@ -151,7 +148,7 @@ export const deleteGoal = createAsyncThunk(
 
     try {
       const resp = await axios.delete(
-        `http://localhost:3000/api/v1/goals/${goalId}`,
+        `${API_URL}/api/v1/goals/${goalId}`,
         config
       )
       return resp.data
@@ -217,6 +214,7 @@ const goalsSlice = createSlice({
       })
       .addCase(getGoals.fulfilled, (state, { payload }) => {
         state.loading = false
+        console.log(payload)
         state.goalCards = payload
       })
       .addCase(getGoals.rejected, (state, { payload }) => {

@@ -17,7 +17,7 @@ const SavedGoals = () => {
   return (
     <>
       <Divider title={"Saved Goals"} />
-      <div className="flex justify-center p-3 h-screen ">
+      <div className="flex justify-center p-3">
         <button className="btn shadow-xl" onClick={localHandler}>
           Load Goals
         </button>
@@ -38,7 +38,7 @@ const SavedGoals = () => {
         </article>
       )}
 
-      <section className="flex flex-wrap justify-center items-center gap-3 p-4 max-w-full">
+      <section className="flex flex-wrap justify-center items-center gap-3 p-4 ">
         {goalCards.goals?.map((item, index) => {
           const { targetGoal, targetDate, _id: goalId } = item
           return (
