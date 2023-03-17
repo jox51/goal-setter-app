@@ -4,6 +4,7 @@ import CreateGoal from "./pages/CreateGoal"
 import { Routes, Route } from "react-router-dom"
 import SavedGoals from "./pages/SavedGoals"
 import Footer from "./components/Footer"
+import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
   return (
@@ -11,8 +12,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/creategoal" element={<CreateGoal />} />
-        <Route path="/savedgoals" element={<SavedGoals />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/creategoal" element={<CreateGoal />} />
+          <Route path="/savedgoals" element={<SavedGoals />} />
+        </Route>
       </Routes>
       <Footer />
     </main>

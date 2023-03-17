@@ -17,7 +17,7 @@ const SavedGoals = () => {
   return (
     <>
       <Divider title={"Saved Goals"} />
-      <div className="flex justify-center p-3 ">
+      <div className="flex justify-center p-3 h-screen ">
         <button className="btn shadow-xl" onClick={localHandler}>
           Load Goals
         </button>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 const CreateGoal = () => {
   const { loginResp } = useSelector((store) => store.goals)
   return (
-    <section className="flex-col justify-center items-center">
+    <section className="flex-col justify-center items-center h-screen">
       <div className="divider font-bold">Create Your Goals</div>
       <h1 className="text-center m-4 text-xl font-semibold">
         Welcome <span className="text-primary underline">{loginResp.user}</span>

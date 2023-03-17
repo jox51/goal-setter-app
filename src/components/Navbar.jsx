@@ -7,10 +7,9 @@ import { logoutUser } from "../features/goals/goalsSlice"
 
 const Navbar = () => {
   const dispatch = useDispatch()
-  const { hideLogin } = useSelector((store) => store.goals)
+  const { hideLogin, loginResp } = useSelector((store) => store.goals)
 
   const localHandler = (e) => {
-    console.log(e.target.id)
     dispatch(logoutUser())
   }
 
@@ -41,23 +40,27 @@ const Navbar = () => {
             <li>
               <Link to={"/"}>Home</Link>
             </li>
-            <li tabIndex={0}>
-              <Link to={"/creategoal"} className="justify-between">
-                Create Goals
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link to={"/savedgoals"}>Saved Goals</Link>
-            </li>
+            {loginResp.msg === "login success" && (
+              <li tabIndex={0}>
+                <Link to={"/creategoal"} className="justify-between">
+                  Create Goals
+                  <svg
+                    className="fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                  </svg>
+                </Link>
+              </li>
+            )}
+            {loginResp.msg === "login success" && (
+              <li>
+                <Link to={"/savedgoals"}>Saved Goals</Link>
+              </li>
+            )}
           </ul>
         </div>
         <Link to={"/"} className="btn btn-ghost normal-case text-xl">
@@ -69,12 +72,16 @@ const Navbar = () => {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li tabIndex={0}>
-            <Link to={"/creategoal"}>Create Goals</Link>
-          </li>
-          <li>
-            <Link to={"/savedgoals"}>Saved Goals</Link>
-          </li>
+          {loginResp.msg === "login success" && (
+            <li tabIndex={0}>
+              <Link to={"/creategoal"}>Create Goals</Link>
+            </li>
+          )}
+          {loginResp.msg === "login success" && (
+            <li>
+              <Link to={"/savedgoals"}>Saved Goals</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
